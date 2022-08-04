@@ -8,18 +8,14 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class AppOrderTest {
     @Test
-
-void shouldSubmitRequest() {
+    void shouldSubmitRequest() {
 
         open("http://localhost:9999/");
-    $("[name='name']").setValue("Филипп Кошечкин");
-    $("[name='phone']").setValue("+79000000000");
-    $(".checkbox__box").click();
-    $(".button__text").click();
-    $(".Success_successBlock__2L3Cw").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.".trim()));
-
-
-
+        $("[name='name']").setValue("Филипп Кошечкин-Лукошечкин");
+        $("[name='phone']").setValue("+79000000000");
+        $("[data-test-id='agreement']").click();
+        $(".button__text").click();
+        $("[data-test-id='order-success").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.".trim()));
 
     }
 }
